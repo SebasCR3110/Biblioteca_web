@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
+﻿#nullable disable
 
 namespace Biblioteca_web.Core.Entities
 {
-    public partial class Autores
+    public partial class Autores : EntidadBase
     {
-        public int IdAutor { get; set; }
         public string NombreAutor { get; set; }
         public string NacionalidadAutor { get; set; }
     }
