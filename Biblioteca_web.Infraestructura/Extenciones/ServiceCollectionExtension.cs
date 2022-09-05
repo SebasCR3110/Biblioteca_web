@@ -93,5 +93,23 @@ namespace Biblioteca_web.Infraestructura.Extenciones
 
             return services;
         }
+
+        public static IServiceCollection AgregaCors(this IServiceCollection services, IConfiguration configuration)
+        {
+            // Se agrega para evirtar problemas de CORS
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    var frontend_url = configuration.GetValue<string>("Authentication:Audience");
+                    builder.WithOrigins(frontend_url).AllowAnyMethod().AllowAnyHeader()
+                    .WithExposedHeaders(new string[] { "totalRecords" });
+                });
+            });
+
+
+            return services;
+        }
+
     }
 }

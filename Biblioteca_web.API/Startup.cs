@@ -48,6 +48,9 @@ namespace Biblioteca_web.API
 
             services.AgregaAutenticacionJwt(Configuration);
 
+            // Se agrega para evitar problemas de CORS
+            services.AgregaCors(Configuration);
+
             services.AgregaSwagger($"{Assembly.GetExecutingAssembly().GetName().Name}.xml");
 
 
@@ -73,11 +76,17 @@ namespace Biblioteca_web.API
 
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("../swagger/v1/swagger.jason","Biblioteca Web API v1");
-                //options.RoutePrefix = string.Empty;
+                options.SwaggerEndpoint("/swagger/v1/swagger.jason","Biblioteca Web API v1");
+                options.RoutePrefix = string.Empty;
             });
 
             app.UseRouting();
+
+            // Se agrega para evitar problemas con CORS en Frontend
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseAuthentication();
 

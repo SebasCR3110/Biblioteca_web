@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_web.API.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]

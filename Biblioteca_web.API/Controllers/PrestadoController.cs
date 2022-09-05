@@ -58,7 +58,7 @@ namespace Biblioteca_web.API.Controllers
             };
 
             var respuesta = new ApiRespuesta<IEnumerable<PrestadoDto>>(prestadosDtos)
-            { 
+            {
                 Meta = metadato
             };
 
@@ -132,6 +132,7 @@ namespace Biblioteca_web.API.Controllers
             return Ok(respuesta);
 
         }
+        
 
     }
 }
